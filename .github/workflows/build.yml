@@ -1,0 +1,22 @@
+name: Build ESP32 Firmware
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup PlatformIO
+      uses: platformio/platformio-core-action@v1
+      with:
+        platform: espressif32
+        board: esp32dev
+        
+    - name: Upload firmware
+      uses: actions/upload-artifact@v3
+      with:
+        name: firmware
+        path: .pio/build/esp32dev/firmware.bin
