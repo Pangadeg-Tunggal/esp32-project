@@ -7,16 +7,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Setup PlatformIO
-      uses: platformio/platformio-core-action@v1
+      uses: platformio/actions/platformio@v1
       with:
         platform: espressif32
         board: esp32dev
         
     - name: Upload firmware
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: firmware
         path: .pio/build/esp32dev/firmware.bin
